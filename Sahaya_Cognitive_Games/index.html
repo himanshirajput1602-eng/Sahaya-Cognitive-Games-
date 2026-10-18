@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sahaya · Cognitive Wellness Studio</title>
+  <meta name="description" content="A mindful practice in attention, working memory, and cognitive sharpness with 6 interactive mini-games.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,600;1,6..72,400&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="studio-header">
+    <div class="header-inner">
+      <div class="brand" id="brand-logo" onclick="app.showDashboard()">
+        <span class="brand-symbol">स</span>
+        <div class="brand-text">
+          <span class="brand-title">Sahaya</span>
+          <span class="brand-sub">Cognitive Wellness Studio</span>
+        </div>
+      </div>
+      <div class="header-actions">
+        <div class="focus-pill" id="global-focus-pill">
+          <span class="pill-dot"></span>
+          <span class="pill-label">Studio Focus:</span>
+          <strong id="global-focus-val">0.0 / 10</strong>
+        </div>
+        <button class="btn-theme" id="btn-theme-toggle" onclick="app.toggleTheme()" title="Toggle visual ambience">🌗</button>
+      </div>
+    </div>
+  </header>
+
+  <!-- Main View Container -->
+  <main id="app-viewport">
+    <!-- DASHBOARD VIEW -->
+    <section id="view-dashboard" class="view-panel active">
+      <div class="hero-section">
+        <div class="hero-badge">A daily practice in attention</div>
+        <h1 class="hero-title">Make space for a <em>sharper mind</em>.</h1>
+        <p class="hero-subtitle">
+          Six gentle, scientifically grounded cognitive practices designed to stretch memory, focus, and mental clarity.
+        </p>
+        <div class="hero-meta-bar">
+          <div class="stat-card">
+            <span class="stat-val" id="total-practices-completed">0</span>
+            <span class="stat-lbl">Practices Completed</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-val" id="highest-score-stat">0.0</span>
+            <span class="stat-lbl">Highest Score / 10</span>
+          </div>
+          <div class="stat-card">
+            <span class="stat-val" id="rituals-unlocked-count">6 / 6</span>
+            <span class="stat-lbl">Rituals Active</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Practice Library Grid -->
+      <section class="library-section">
+        <div class="section-header">
+          <div>
+            <h2 class="section-title">Choose your ritual</h2>
+            <p class="section-desc">Each exercise scales across 5 levels of progressive difficulty.</p>
+          </div>
+          <button class="btn-outline-sm" onclick="app.resetAllProgress()">Reset Progress</button>
+        </div>
+
+        <div class="cards-grid" id="practice-cards-grid">
+          <!-- Dynamically populated by app.js -->
+        </div>
+      </section>
+    </section>
+
+    <!-- GAME ARENA VIEW -->
+    <section id="view-game" class="view-panel">
+      <div class="game-top-bar">
+        <button class="btn-back" id="btn-game-back" onclick="app.showDashboard()">
+          ← Return to Rituals
+        </button>
+        <div class="game-meta-center">
+          <span class="game-tag-badge" id="arena-game-tag">Memory</span>
+          <h2 class="arena-title" id="arena-game-title">Yaad Rakho</h2>
+        </div>
+        <div class="game-level-indicator" id="arena-level-badge">Level 1 of 5</div>
+      </div>
+
+      <div class="arena-content" id="arena-content-area">
+        <!-- Game specific interactive markup mounted here -->
+      </div>
+    </section>
+
+    <!-- RESULT MODAL / SCREEN -->
+    <div id="modal-result" class="modal-backdrop">
+      <div class="modal-card">
+        <div class="modal-emoji" id="res-emoji">🏆</div>
+        <h2 class="modal-title" id="res-title">Practice Completed!</h2>
+        <p class="modal-game-name" id="res-game-name">Yaad Rakho</p>
+        
+        <div class="score-circle-container">
+          <svg class="score-ring" viewBox="0 0 120 120">
+            <circle class="score-ring-bg" cx="60" cy="60" r="52"></circle>
+            <circle class="score-ring-progress" id="res-ring-progress" cx="60" cy="60" r="52"></circle>
+          </svg>
+          <div class="score-ring-text">
+            <span class="score-num" id="res-score-num">9.2</span>
+            <span class="score-den">/ 10</span>
+          </div>
+        </div>
+
+        <div class="stars-display" id="res-stars">⭐⭐⭐⭐⭐</div>
+        <p class="modal-feedback-msg" id="res-feedback-msg">Exceptional precision and recall.</p>
+
+        <div class="modal-actions">
+          <button class="btn-primary" id="btn-res-replay" onclick="app.replayCurrentGame()">Play Again ↺</button>
+          <button class="btn-secondary" onclick="app.showDashboard()">Dashboard 🏠</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="studio-footer">
+    <p>🌿 <strong>Sahaya</strong> · Cognitive Wellness Studio · Mindful Mental Fitness</p>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
